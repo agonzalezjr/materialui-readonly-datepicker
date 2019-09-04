@@ -1,44 +1,84 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# materialui-readonly-datepicker
 
-## Available Scripts
+```
+git close https://github.com/agonzalezjr/materialui-readonly-datepicker.git
+cd materialui-readonly-datepicker
+npm run i
+npm run start
+```
 
-In the project directory, you can run:
+The checkbox controls whether an `open={false}` param is passed to the `DateTimePicker`. 
 
-### `npm start`
+With this implementation, the following error is printed when the switch is made:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+Warning: React has detected a change in the order of Hooks called by PickerWithState. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://fb.me/rules-of-hooks
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+   Previous render            Next render
+   ------------------------------------------------------
+1. useContext                 useContext
+2. useContext                 useContext
+3. useState                   useCallback
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+    in PickerWithState (at App.tsx:14)
+    in MuiPickersUtilsProvider (at App.tsx:40)
+    in div (at App.tsx:28)
+    in App (at src/index.tsx:7)
+    
+TypeError: Cannot read property 'length' of undefined
+    at areHookInputsEqual (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:15766:1)
+    at updateCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:16365:1)
+    at Object.useCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:16748:1)
+    at useCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react/cjs/react.development.js:1624:1)
+    at useOpenState (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/@material-ui/pickers/esm/_shared/hooks/useOpenState.js:22:1)
+    at usePickerState (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/@material-ui/pickers/esm/_shared/hooks/usePickerState.js:35:1)
+    at PickerWithState (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/@material-ui/pickers/esm/Picker/makePickerWithState.js:62:1)
+    at renderWithHooks (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:15821:1)
+    at updateFunctionComponent (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:17705:1)
+    at beginWork$1 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:19371:1)
+    at HTMLUnknownElement.callCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:363:1)
+    at Object.invokeGuardedCallbackDev (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:412:1)
+    at invokeGuardedCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:466:1)
+    at beginWork$$1 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:24570:1)
+    at performUnitOfWork (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:23505:1)
+    at workLoopSync (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:23480:1)
+    at renderRoot (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:23155:1)
+    at runRootCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:22809:1)
+    at /Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11886:1
+    at unstable_runWithPriority (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/scheduler/cjs/scheduler.development.js:674:1)
+    at runWithPriority$2 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11834:1)
+    at flushSyncCallbackQueueImpl (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11881:1)
+    at flushSyncCallbackQueue (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11869:1)
+    at discreteUpdates$1 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:22941:1)
+    at discreteUpdates (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:2440:1)
+    at dispatchDiscreteEvent (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:6254:1)
+    
+TypeError: Cannot read property 'length' of undefined
+    at areHookInputsEqual (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:15766:1)
+    at updateCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:16365:1)
+    at Object.useCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:16748:1)
+    at useCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react/cjs/react.development.js:1624:1)
+    at useOpenState (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/@material-ui/pickers/esm/_shared/hooks/useOpenState.js:22:1)
+    at usePickerState (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/@material-ui/pickers/esm/_shared/hooks/usePickerState.js:35:1)
+    at PickerWithState (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/@material-ui/pickers/esm/Picker/makePickerWithState.js:62:1)
+    at renderWithHooks (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:15821:1)
+    at updateFunctionComponent (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:17705:1)
+    at beginWork$1 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:19371:1)
+    at HTMLUnknownElement.callCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:363:1)
+    at Object.invokeGuardedCallbackDev (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:412:1)
+    at invokeGuardedCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:466:1)
+    at beginWork$$1 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:24570:1)
+    at performUnitOfWork (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:23505:1)
+    at workLoopSync (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:23480:1)
+    at renderRoot (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:23155:1)
+    at runRootCallback (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:22809:1)
+    at /Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11886:1
+    at unstable_runWithPriority (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/scheduler/cjs/scheduler.development.js:674:1)
+    at runWithPriority$2 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11834:1)
+    at flushSyncCallbackQueueImpl (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11881:1)
+    at flushSyncCallbackQueue (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:11869:1)
+    at discreteUpdates$1 (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:22941:1)
+    at discreteUpdates (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:2440:1)
+    at dispatchDiscreteEvent (/Users/agonzalezjr/code/mirata/materialui-readonly-datepicker/node_modules/react-dom/cjs/react-dom.development.js:6254:1)
+```
