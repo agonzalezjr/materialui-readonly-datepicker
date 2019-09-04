@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import './App.css';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
 import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
@@ -41,15 +41,17 @@ const App: React.FC = () => {
 
       {/* This doesn't crash */}
       {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        {readOnly && <DateTimePicker
-          onChange={(newDate) => setDate(newDate as Date)}
-          value={date}
-          open={false}
-        />}
-        {!readOnly && <DateTimePicker
-          onChange={(newDate) => setDate(newDate as Date)}
-          value={date}
-        />}
+        <Fragment>
+          {readOnly && <DateTimePicker
+            onChange={(newDate) => setDate(newDate as Date)}
+            value={date}
+            open={false}
+          />}
+          {!readOnly && <DateTimePicker
+            onChange={(newDate) => setDate(newDate as Date)}
+            value={date}
+          />}
+        </Fragment>
       </MuiPickersUtilsProvider> */}
     </div>
   );
