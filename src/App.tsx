@@ -35,7 +35,22 @@ const App: React.FC = () => {
         label="ReadOnly?"
       />
       <h1>Rendering as "{readOnly ? "ReadOnly" : "Editable"}"</h1>
+
+      {/* This will crash it! */}
       <MuiPickersUtilsProvider utils={DateFnsUtils}>{dateTimePicker()}</MuiPickersUtilsProvider>
+
+      {/* This doesn't crash */}
+      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {readOnly && <DateTimePicker
+          onChange={(newDate) => setDate(newDate as Date)}
+          value={date}
+          open={false}
+        />}
+        {!readOnly && <DateTimePicker
+          onChange={(newDate) => setDate(newDate as Date)}
+          value={date}
+        />}
+      </MuiPickersUtilsProvider> */}
     </div>
   );
 }
