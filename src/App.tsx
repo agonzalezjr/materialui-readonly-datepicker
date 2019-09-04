@@ -13,6 +13,41 @@ const App: React.FC = () => {
   const onBlur = () => setFocus(false)
   const onFocus = () => setFocus(true)
 
+  const dateTimePicker = () => {
+    if (readOnly) {
+      return (<DateTimePicker
+        disabled={false}
+        error={false}
+        InputProps={{
+          disableUnderline: false,
+          inputProps: {
+            style: { textAlign: "left" }
+          }
+        }}
+        onChange={(newDate) => setDate(newDate as Date)}
+        onBlur={onBlur}
+        onFocus={onFocus}
+        value={date}
+        open={false}
+      />)
+    }
+
+    return (<DateTimePicker
+      disabled={false}
+      error={false}        
+      InputProps={{
+        disableUnderline: false,
+        inputProps: {
+          style: { textAlign: "left" }
+        }
+      }}
+      onChange={(newDate) => setDate(newDate as Date)}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      value={date}
+    />)
+  }
+
   return (
     <div>
       <FormControlLabel
@@ -25,39 +60,7 @@ const App: React.FC = () => {
       />
       <h1>Rendering as "{readOnly ? "ReadOnly" : "Editable"}"</h1>
       <h2>Am I in focus? {String(isFocused)}.</h2>
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        {readOnly && <DateTimePicker
-          disabled={false}
-          error={false}
-          InputProps={{
-            disableUnderline: false,
-            inputProps: {
-              style: { textAlign: "left" }
-            }
-          }}
-          onChange={(newDate) => setDate(newDate as Date)}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          value={date}
-          open={false}
-          />
-        }
-        {!readOnly && <DateTimePicker
-          disabled={false}
-          error={false}        
-          InputProps={{
-            disableUnderline: false,
-            inputProps: {
-              style: { textAlign: "left" }
-            }
-          }}
-          onChange={(newDate) => setDate(newDate as Date)}
-          onBlur={onBlur}
-          onFocus={onFocus}
-          value={date}
-          />
-        }
-      </MuiPickersUtilsProvider>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>{dateTimePicker()}</MuiPickersUtilsProvider>
     </div>
   );
 }
