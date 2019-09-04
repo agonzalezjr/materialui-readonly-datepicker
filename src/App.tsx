@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
 import { Checkbox, FormControlLabel } from '@material-ui/core';
+import { DateTimePicker, MuiPickersUtilsProvider } from "@material-ui/pickers"
+import DateFnsUtils from "@date-io/date-fns"
 
 const App: React.FC = () => {
 
   const [readOnly, setReadOnly] = useState(false)
+  const [date, setDate] = useState(new Date())
+  const [isFocused, setFocus] = useState(false)
+
+  const onBlur = () => setFocus(false)
+  const onFocus = () => setFocus(true)
 
   return (
     <div>
@@ -17,6 +24,40 @@ const App: React.FC = () => {
         label="ReadOnly?"
       />
       <h1>Rendering as "{readOnly ? "ReadOnly" : "Editable"}"</h1>
+      <h2>Am I in focus? {String(isFocused)}.</h2>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {readOnly && <DateTimePicker
+          disabled={false}
+          error={false}
+          InputProps={{
+            disableUnderline: false,
+            inputProps: {
+              style: { textAlign: "left" }
+            }
+          }}
+          onChange={(newDate) => setDate(newDate as Date)}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          value={date}
+          open={false}
+          />
+        }
+        {!readOnly && <DateTimePicker
+          disabled={false}
+          error={false}        
+          InputProps={{
+            disableUnderline: false,
+            inputProps: {
+              style: { textAlign: "left" }
+            }
+          }}
+          onChange={(newDate) => setDate(newDate as Date)}
+          onBlur={onBlur}
+          onFocus={onFocus}
+          value={date}
+          />
+        }
+      </MuiPickersUtilsProvider>
     </div>
   );
 }
