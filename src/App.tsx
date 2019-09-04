@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { Checkbox, FormControlLabel } from '@material-ui/core';
 
 const App: React.FC = () => {
 
@@ -7,9 +8,15 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <input type="checkbox" id="scales" name="scales" checked={readOnly} onChange={() => setReadOnly(!readOnly)}/>
-      <text>readOnly?</text>
-      <h1>I am {readOnly ? "ReadOnly" : "Editable"}</h1>
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={readOnly}
+            onChange={() => setReadOnly(!readOnly)}
+          />}
+        label="ReadOnly?"
+      />
+      <h1>Rendering as "{readOnly ? "ReadOnly" : "Editable"}"</h1>
     </div>
   );
 }
